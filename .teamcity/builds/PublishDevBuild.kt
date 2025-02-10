@@ -44,12 +44,6 @@ object PublishDevBuild : BuildType({
 
         gradle {
             workingDir = "repository-tools"
-            name = "Push Dev Version"
-            tasks = "pushDevVersion"
-        }
-
-        gradle {
-            workingDir = "repository-tools"
             name = "Bump Bootstrap Version"
             tasks = "bumpBootstrapVersion"
         }
