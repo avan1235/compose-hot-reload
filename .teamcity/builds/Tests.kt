@@ -6,8 +6,10 @@
 package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
+import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import vcs.Github
 
@@ -36,9 +38,30 @@ object Tests : BuildType({
         perfmon {
 
         }
+
+        buildCache {
+            this.publish = true
+            this.name = "Build Src Cache"
+            this.rules = """
+                buildSrc/**
+            """.trimIndent()
+        }
     }
 
     requirements {
         matches("teamcity.agent.jvm.os.name", "Linux")
     }
+
+    steps {
+        gradle {
+            name = "Publish Locally"
+            tasks = "publishLocally"
+        }
+
+        gradle {
+            name = "Test"
+            tasks = "check"
+        }
+    }
+
 })
