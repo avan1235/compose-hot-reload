@@ -33,9 +33,6 @@ object Tests : BuildType({
     }
 
     features {
-        perfmon {
-
-        }
 
         /*
         commitStatusPublisher {
@@ -46,15 +43,6 @@ object Tests : BuildType({
             }
         }*/
 
-        buildCache {
-            publish = true
-            name = "Build Src Cache"
-            rules = """
-                buildSrc/build/**
-                buildSrc/.gradle/**
-                buildSrc/.kotlin/**
-            """.trimIndent()
-        }
 
         buildCache {
             publish = true
@@ -65,11 +53,6 @@ object Tests : BuildType({
             """.trimIndent()
         }
 
-        gradleCache {}
-    }
-
-    requirements {
-        matches("teamcity.agent.jvm.os.name", "Linux")
     }
 
     steps {

@@ -7,7 +7,6 @@ package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.ParameterDisplay
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import vcs.Github
 
@@ -42,10 +41,6 @@ object PublishDev : BuildType({
             "credentialsJSON:0c2c7f64-7532-4e25-b950-7317f831eda4",
             display = ParameterDisplay.HIDDEN,
         )
-    }
-
-    features {
-        perfmon { }
     }
 
     steps {

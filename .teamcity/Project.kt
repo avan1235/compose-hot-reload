@@ -3,9 +3,9 @@ import builds.BumpDev
 import builds.Nightly
 import builds.PublishDev
 import builds.Tests
+import builds.conventions.configureConventions
 import jetbrains.buildServer.configs.kotlin.ParameterDisplay
 import jetbrains.buildServer.configs.kotlin.Project
-import jetbrains.buildServer.configs.kotlin.sequential
 import vcs.Github
 
 /*
@@ -22,9 +22,7 @@ object ComposeHotReloadProject : Project({
     buildType(BumpBootstrap)
 
     buildTypes.forEach { buildType ->
-        buildType.requirements {
-            matches("teamcity.agent.jvm.os.name", "Linux")
-        }
+        buildType.configureConventions()
     }
 
     params {

@@ -8,7 +8,6 @@ package builds
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import vcs.Github
@@ -18,11 +17,6 @@ object BumpDev : BuildType({
 
     vcs {
         root(Github)
-    }
-
-    features {
-        perfmon { }
-        gradleCache {  }
     }
 
     steps {
