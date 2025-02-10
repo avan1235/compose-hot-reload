@@ -18,7 +18,6 @@ object PublishDev : BuildType({
         root(Github)
     }
 
-
     params {
         password(
             "env.ORG_GRADLE_PROJECT_repo.sellmair.user",
