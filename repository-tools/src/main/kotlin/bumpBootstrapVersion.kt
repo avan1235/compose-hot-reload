@@ -7,7 +7,4 @@ fun main() {
     ensureCleanWorkingDirectory()
     val version = readGradleProperties("version")
     writeGradleProperties("bootstrap.version", version)
-
-    command("git", "add", ".")
-    command("git", "commit", "-m", "Bootstrap v$version")
 }

@@ -24,10 +24,6 @@ object Tests : BuildType({
         **/build/reports/**
     """.trimIndent()
 
-    vcs {
-        root(Github)
-    }
-
     triggers {
         vcs {}
     }

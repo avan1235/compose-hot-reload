@@ -1,4 +1,3 @@
-import java.util.Locale
 import java.util.Locale.getDefault
 
 /*
@@ -20,6 +19,8 @@ tasks.withType<JavaExec>().configureEach {
     mainClass = name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString() } + "Kt"
 }
 
-tasks.register<JavaExec>("bumpBuildNumber")
+tasks.register<JavaExec>("bumpDevVersion")
 
 tasks.register<JavaExec>("bumpBootstrapVersion")
+
+tasks.register<JavaExec>("pushDevVersion")

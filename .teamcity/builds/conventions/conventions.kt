@@ -9,11 +9,19 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import vcs.Github
 
 fun BuildType.configureConventions() {
     requireLinux()
+    defaultVcs()
     defaultFeatures()
     defaultCaches()
+    pushPrivilegeConventions()
+}
+
+
+private fun BuildType.defaultVcs() {
+    vcs { root(Github) }
 }
 
 private fun BuildType.requireLinux() {

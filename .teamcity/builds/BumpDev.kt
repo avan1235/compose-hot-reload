@@ -5,40 +5,30 @@
 
 package builds
 
+import builds.conventions.PushPrivilege
+import builds.conventions.publishDevVersion
+import builds.conventions.setupGit
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.CheckoutMode
-import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import vcs.Github
 
 object BumpDev : BuildType({
     name = "Bump: dev version"
 
-    features {
-        sshAgent {
-            teamcitySshKey = "compose-hot-reload-deploy-id_rsa"
-        }
-    }
-
-
-    vcs {
-        checkoutMode = CheckoutMode.ON_AGENT
-        root(Github)
-    }
-
     steps {
-        script {
-            name = "Setup Git"
-            scriptContent = """
-                git config user.email "compose-team@jetbrains.com"
-                git config user.name "JetBrains Compose Team"
-            """.trimIndent()
-        }
+        setupGit()
+
         gradle {
             workingDir = "repository-tools"
-            name = "Bump Build Number"
-            tasks = "bumpBuildNumber"
+            name = "Bump Dev Version"
+            tasks = "bumpDevVersion"
+        }
+
+        publishDevVersion()
+
+        gradle {
+            workingDir = "repository-tools"
+            name = "Push Dev Version"
+            tasks = "pushDevVersion"
         }
     }
-})
+}), PushPrivilege

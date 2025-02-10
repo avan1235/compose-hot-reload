@@ -5,20 +5,14 @@
 
 package builds
 
+import builds.conventions.PushPrivilege
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import vcs.Github
 
 object BumpBootstrap : BuildType({
     name = "Bump: bootstrap version"
     description = "Bumps bootstrap version"
-
-    vcs {
-        root(Github)
-    }
 
     steps {
         script {
@@ -35,4 +29,4 @@ object BumpBootstrap : BuildType({
             tasks = "bumpBootstrapVersion"
         }
     }
-})
+}), PushPrivilege
