@@ -1,4 +1,5 @@
 import builds.PublishDevBuild
+import builds.PublishLocally
 import builds.Tests
 import builds.conventions.configureConventions
 import jetbrains.buildServer.configs.kotlin.ParameterDisplay
@@ -14,6 +15,7 @@ object ComposeHotReloadProject : Project({
     vcsRoot(Github)
     buildType(Tests)
     buildType(PublishDevBuild)
+    buildType(PublishLocally)
 
     buildTypes.forEach { buildType ->
         buildType.configureConventions()
