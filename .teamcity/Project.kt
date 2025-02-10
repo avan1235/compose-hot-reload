@@ -3,6 +3,7 @@ import builds.PublishDev
 import builds.Tests
 import jetbrains.buildServer.configs.kotlin.Project
 import vcs.Github
+import vcs.GithubTC
 
 /*
  * Copyright 2024-2025 JetBrains s.r.o. and Compose Hot Reload contributors.
@@ -10,7 +11,7 @@ import vcs.Github
  */
 
 object ComposeHotReloadProject : Project({
-    vcsRoot(Github)
+    vcsRoot(GithubTC)
     buildType(Tests)
     buildType(PublishDev)
     buildType(Nightly)

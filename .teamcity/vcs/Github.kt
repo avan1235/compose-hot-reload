@@ -17,3 +17,14 @@ object Github : GitVcsRoot({
         password = "credentialsJSON:da04c3b1-7589-4c6f-87ee-83cf8ab7827d"
     }
 })
+
+object GithubTC : GitVcsRoot({
+    name = "github"
+    url = "https://github.com/JetBrains/compose-hot-reload"
+    branch = "refs/heads/teamcity"
+    branchSpec = "refs/heads/*"
+    authMethod = password {
+        userName = "sellmair"
+        password = "credentialsJSON:da04c3b1-7589-4c6f-87ee-83cf8ab7827d"
+    }
+})
