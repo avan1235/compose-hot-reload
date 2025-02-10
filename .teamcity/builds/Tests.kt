@@ -10,7 +10,6 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import vcs.Github
@@ -28,8 +27,7 @@ object Tests : BuildType({
     }
 
     triggers {
-        vcs {
-        }
+        vcs {}
     }
 
     features {
@@ -37,14 +35,14 @@ object Tests : BuildType({
 
         }
 
+        /*
         commitStatusPublisher {
             vcsRootExtId = "${Github.id}"
-            github {
+            publisher = github {
                 githubUrl = "https://api.github.com"
-                authType = personalToken {
-                }
+                authType = personalToken {}
             }
-        }
+        }*/
 
         buildCache {
             publish = true
@@ -65,8 +63,7 @@ object Tests : BuildType({
             """.trimIndent()
         }
 
-        gradleCache {
-        }
+        gradleCache {}
     }
 
     requirements {

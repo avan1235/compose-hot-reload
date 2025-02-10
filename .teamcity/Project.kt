@@ -14,4 +14,7 @@ object ComposeHotReloadProject : Project({
     buildType(Tests)
     buildType(PublishDev)
     buildType(Nightly)
+
+    features {
+    }
 })
