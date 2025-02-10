@@ -12,7 +12,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import vcs.Github
 
 object BumpBootstrap : BuildType({
-    name = "Bump bootstrap"
+    name = "Bump: bootstrap version"
     description = "Bumps bootstrap version"
 
     vcs {

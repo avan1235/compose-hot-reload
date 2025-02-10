@@ -12,7 +12,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import vcs.Github
 
 object BumpDev : BuildType({
-    name = "Bootstrap"
+    name = "Bump: dev version"
 
     vcs {
         root(Github)
