@@ -8,9 +8,14 @@ package builds
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
+import vcs.Github
 
 object PublishDev : BuildType({
     name = "Publish Dev"
+
+    vcs {
+        root(Github)
+    }
 
     features {
         perfmon { }
