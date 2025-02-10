@@ -7,6 +7,7 @@ package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
+import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
@@ -40,11 +41,14 @@ object Tests : BuildType({
         }
 
         buildCache {
-            this.publish = true
-            this.name = "Build Src Cache"
-            this.rules = """
+            publish = true
+            name = "Build Src Cache"
+            rules = """
                 buildSrc/**
             """.trimIndent()
+        }
+
+        gradleCache {
         }
     }
 
@@ -56,6 +60,7 @@ object Tests : BuildType({
         gradle {
             name = "Publish Locally"
             tasks = "publishLocally"
+
         }
 
         gradle {
@@ -63,5 +68,4 @@ object Tests : BuildType({
             tasks = "check"
         }
     }
-
 })
