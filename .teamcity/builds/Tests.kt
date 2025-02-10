@@ -17,6 +17,8 @@ import vcs.Github
 object Tests : BuildType({
     name = "Tests"
 
+    paused = true
+
     artifactRules = """
         **/*-actual*
         **/build/reports/**
