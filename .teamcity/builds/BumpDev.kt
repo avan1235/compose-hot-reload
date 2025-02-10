@@ -6,8 +6,7 @@
 package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import vcs.Github
@@ -15,7 +14,9 @@ import vcs.Github
 object BumpDev : BuildType({
     name = "Bump: dev version"
 
+
     vcs {
+        checkoutMode = CheckoutMode.ON_AGENT
         root(Github)
     }
 
