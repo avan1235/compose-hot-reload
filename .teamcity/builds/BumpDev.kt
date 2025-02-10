@@ -7,12 +7,19 @@ package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.CheckoutMode
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import vcs.Github
 
 object BumpDev : BuildType({
     name = "Bump: dev version"
+
+    features {
+        sshAgent {
+            teamcitySshKey = "compose-hot-reload-deploy-id_rsa"
+        }
+    }
 
 
     vcs {
