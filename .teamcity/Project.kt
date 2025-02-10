@@ -12,6 +12,7 @@ import vcs.GithubTC
 
 object ComposeHotReloadProject : Project({
     vcsRoot(GithubTC)
+    vcsRoot(Github)
     buildType(Tests)
     buildType(PublishDev)
     buildType(Nightly)
