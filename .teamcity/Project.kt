@@ -1,3 +1,4 @@
+import builds.BumpDev
 import builds.Nightly
 import builds.PublishDev
 import builds.Tests
@@ -15,6 +16,8 @@ object ComposeHotReloadProject : Project({
     buildType(Tests)
     buildType(PublishDev)
     buildType(Nightly)
+    buildType(BumpDev)
+
 
     params {
         password(

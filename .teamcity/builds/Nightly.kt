@@ -11,11 +11,6 @@ import jetbrains.buildServer.configs.kotlin.triggers.schedule
 object Nightly : BuildType({
     name = "Nightly"
 
-    dependencies {
-        snapshot(Tests) {
-        }
-    }
-
     triggers {
         schedule {
             branchFilter = "+:<default>"
