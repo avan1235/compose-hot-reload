@@ -41,7 +41,18 @@ object Tests : BuildType({
             publish = true
             name = "Build Src Cache"
             rules = """
-                buildSrc/**
+                buildSrc/build/**
+                buildSrc/.gradle/**
+                buildSrc/.kotlin/**
+            """.trimIndent()
+        }
+
+        buildCache {
+            publish = true
+            name = "Functional Test Gradle Cache"
+            rules = """
+                tests/build/gradleHome/**
+                tests/build/reloadFunctionalTestWarmup/**
             """.trimIndent()
         }
 
