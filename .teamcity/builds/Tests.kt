@@ -7,6 +7,7 @@ package builds
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
+import jetbrains.buildServer.configs.kotlin.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
@@ -32,9 +33,17 @@ object Tests : BuildType({
     }
 
     features {
-
         perfmon {
 
+        }
+
+        commitStatusPublisher {
+            vcsRootExtId = "${Github.id}"
+            github {
+                githubUrl = "https://api.github.com"
+                authType = personalToken {
+                }
+            }
         }
 
         buildCache {
