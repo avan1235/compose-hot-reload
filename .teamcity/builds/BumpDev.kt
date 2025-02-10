@@ -8,7 +8,9 @@ package builds
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import vcs.Github
 
 object BumpDev : BuildType({
@@ -24,6 +26,13 @@ object BumpDev : BuildType({
     }
 
     steps {
+        script {
+            name = "Setup Git"
+            scriptContent = """
+                git config user.email "compose-team@jetbrains.com"
+                git config user.name "JetBrains Compose Team"
+            """.trimIndent()
+        }
         gradle {
             workingDir = "repository-tools"
             name = "Bump Build Number"

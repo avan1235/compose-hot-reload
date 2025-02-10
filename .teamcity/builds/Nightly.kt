@@ -18,5 +18,4 @@ object Nightly : BuildType({
             daily { this.hour = 2 }
         }
     }
-
 })
