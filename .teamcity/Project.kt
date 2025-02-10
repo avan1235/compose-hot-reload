@@ -1,3 +1,4 @@
+import builds.Nightly
 import builds.Tests
 import jetbrains.buildServer.configs.kotlin.Project
 import vcs.Github
@@ -10,4 +11,5 @@ import vcs.Github
 object ComposeHotReloadProject : Project({
     vcsRoot(Github)
     buildType(Tests)
+    buildType(Nightly)
 })
