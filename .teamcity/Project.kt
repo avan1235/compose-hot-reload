@@ -29,6 +29,12 @@ object ComposeHotReloadProject : Project({
         buildType(Nightly)
     }
 
+    buildTypes.forEach { buildType ->
+        buildType.requirements {
+            matches("teamcity.agent.jvm.os.name", "Linux")
+        }
+    }
+
     params {
         password(
             "env.ORG_GRADLE_PROJECT_signing.key",
