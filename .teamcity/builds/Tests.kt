@@ -32,9 +32,6 @@ object Tests : BuildType({
     }
 
     features {
-        sshAgent {
-
-        }
 
         perfmon {
 
