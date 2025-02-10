@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" type="jetbrains.git" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>https://github.com/JetBrains/compose-hot-reload#refs/heads/master</name>
+  <param name="authMethod" value="PASSWORD" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="secure:password" value="credentialsJSON:da04c3b1-7589-4c6f-87ee-83cf8ab7827d" />
+  <param name="teamcity:branchSpec" value="refs/heads/*" />
+  <param name="url" value="https://github.com/JetBrains/compose-hot-reload" />
+  <param name="username" value="sellmair" />
+</vcs-root>
+
