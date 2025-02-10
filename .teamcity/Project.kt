@@ -1,9 +1,11 @@
+import builds.BumpBootstrap
 import builds.BumpDev
 import builds.Nightly
 import builds.PublishDev
 import builds.Tests
 import jetbrains.buildServer.configs.kotlin.ParameterDisplay
 import jetbrains.buildServer.configs.kotlin.Project
+import jetbrains.buildServer.configs.kotlin.sequential
 import vcs.Github
 
 /*
@@ -17,7 +19,15 @@ object ComposeHotReloadProject : Project({
     buildType(PublishDev)
     buildType(Nightly)
     buildType(BumpDev)
+    buildType(BumpBootstrap)
 
+    sequential {
+        buildType(Tests)
+        buildType(BumpDev)
+        buildType(PublishDev)
+        buildType(BumpBootstrap)
+        buildType(Nightly)
+    }
 
     params {
         password(
