@@ -21,14 +21,6 @@ object ComposeHotReloadProject : Project({
     buildType(BumpDev)
     buildType(BumpBootstrap)
 
-    sequential {
-        buildType(Tests)
-        buildType(BumpDev)
-        buildType(PublishDev)
-        buildType(BumpBootstrap)
-        buildType(Nightly)
-    }
-
     buildTypes.forEach { buildType ->
         buildType.requirements {
             matches("teamcity.agent.jvm.os.name", "Linux")
