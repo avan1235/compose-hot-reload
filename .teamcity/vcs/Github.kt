@@ -8,8 +8,8 @@ package vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 object Github : GitVcsRoot({
-    name = "git@github.com/JetBrains/compose-hot-reload#refs/heads/master"
-    url = "git@github.com/JetBrains/compose-hot-reload"
+    name = "Compose Hot Reload"
+    url = "git@github.com:JetBrains/compose-hot-reload"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
