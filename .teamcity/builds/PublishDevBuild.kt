@@ -6,6 +6,7 @@
 package builds
 
 import builds.conventions.PublishDevPrivilege
+import builds.conventions.PublishLocallyConvention
 import builds.conventions.PushPrivilege
 import builds.conventions.publishDevVersion
 import builds.conventions.setupGit
@@ -28,6 +29,7 @@ object PublishDevBuild : BuildType({
             }
         }
     }
+
 
     steps {
         setupGit()
@@ -52,4 +54,4 @@ object PublishDevBuild : BuildType({
             tasks = "bumpBootstrapVersion"
         }
     }
-}), PushPrivilege, PublishDevPrivilege
+}), PushPrivilege, PublishDevPrivilege, PublishLocallyConvention

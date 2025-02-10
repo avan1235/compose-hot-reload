@@ -5,14 +5,11 @@
 
 package builds
 
+import builds.conventions.PublishLocallyConvention
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
-import jetbrains.buildServer.configs.kotlin.buildFeatures.commitStatusPublisher
-import jetbrains.buildServer.configs.kotlin.buildFeatures.gradleCache
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import vcs.Github
 
 object Tests : BuildType({
     name = "Tests"
@@ -25,21 +22,11 @@ object Tests : BuildType({
     """.trimIndent()
 
     triggers {
-        vcs {}
+        vcs {
+        }
     }
 
     features {
-
-        /*
-        commitStatusPublisher {
-            vcsRootExtId = "${Github.id}"
-            publisher = github {
-                githubUrl = "https://api.github.com"
-                authType = personalToken {}
-            }
-        }*/
-
-
         buildCache {
             publish = true
             name = "Functional Test Gradle Cache"
@@ -48,19 +35,12 @@ object Tests : BuildType({
                 tests/build/reloadFunctionalTestWarmup/**
             """.trimIndent()
         }
-
     }
 
     steps {
-        gradle {
-            name = "Publish Locally"
-            tasks = "publishLocally"
-
-        }
-
         gradle {
             name = "Test"
             tasks = "check"
         }
     }
-})
+}), PublishLocallyConvention

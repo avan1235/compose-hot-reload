@@ -1,5 +1,4 @@
 import builds.PublishDevBuild
-import builds.Nightly
 import builds.Tests
 import builds.conventions.configureConventions
 import jetbrains.buildServer.configs.kotlin.ParameterDisplay
@@ -14,7 +13,6 @@ import vcs.Github
 object ComposeHotReloadProject : Project({
     vcsRoot(Github)
     buildType(Tests)
-    buildType(Nightly)
     buildType(PublishDevBuild)
 
     buildTypes.forEach { buildType ->

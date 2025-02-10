@@ -18,6 +18,7 @@ fun BuildType.configureConventions() {
     defaultCaches()
     pushPrivilegeConventions()
     publishDevPrivilegeConventions()
+    publishLocallyConventions()
 }
 
 
