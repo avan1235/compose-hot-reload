@@ -1,5 +1,5 @@
 import builds.BumpBootstrap
-import builds.BumpDev
+import builds.PublishDevBuild
 import builds.Nightly
 import builds.PublishDev
 import builds.Tests
@@ -16,10 +16,8 @@ import vcs.Github
 object ComposeHotReloadProject : Project({
     vcsRoot(Github)
     buildType(Tests)
-    buildType(PublishDev)
     buildType(Nightly)
-    buildType(BumpDev)
-    buildType(BumpBootstrap)
+    buildType(PublishDevBuild)
 
     buildTypes.forEach { buildType ->
         buildType.configureConventions()

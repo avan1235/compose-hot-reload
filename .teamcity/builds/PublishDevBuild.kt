@@ -5,14 +5,16 @@
 
 package builds
 
+import builds.conventions.PublishDevPrivilege
 import builds.conventions.PushPrivilege
 import builds.conventions.publishDevVersion
 import builds.conventions.setupGit
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 
-object BumpDev : BuildType({
-    name = "Bump: dev version"
+object PublishDevBuild : BuildType({
+    name = "Publish: Dev Build"
+    description = "Bumps the 'dev' version and publishes to 'dev' repositories; Bumps the bootstrap version"
 
     steps {
         setupGit()
@@ -30,5 +32,11 @@ object BumpDev : BuildType({
             name = "Push Dev Version"
             tasks = "pushDevVersion"
         }
+
+        gradle {
+            workingDir = "repository-tools"
+            name = "Bump Bootstrap Version"
+            tasks = "bumpBootstrapVersion"
+        }
     }
-}), PushPrivilege
+}), PushPrivilege, PublishDevPrivilege
