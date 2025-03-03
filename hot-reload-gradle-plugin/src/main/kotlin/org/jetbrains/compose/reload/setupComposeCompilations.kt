@@ -15,10 +15,12 @@ internal fun Project.setupComposeCompilations() {
         tasks.withType<KotlinJvmCompile>().configureEach { task ->
             if (isIdeaSync.orNull == true) return@configureEach
 
+            /*
             // TODO: Use pluginOptions instead
             task.compilerOptions.freeCompilerArgs.addAll(
                 "-P", "plugin:androidx.compose.compiler.plugins.kotlin:generateFunctionKeyMetaAnnotations=true"
             )
+             */
         }
     }
 }

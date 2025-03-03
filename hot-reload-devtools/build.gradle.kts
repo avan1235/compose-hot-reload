@@ -6,7 +6,6 @@
 @file:OptIn(ExperimentalComposeLibrary::class)
 
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.reload.ComposeHotRun
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -14,9 +13,7 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.compose")
     id("org.jetbrains.compose")
-    id("org.jetbrains.compose.hot-reload")
     `maven-publish`
-    `bootstrap-conventions`
     `publishing-conventions`
 }
 
@@ -58,8 +55,6 @@ dependencies {
     testImplementation(deps.junit.jupiter.engine)
     testImplementation(compose.uiTest)
     testImplementation(compose.desktop.currentOs)
-
-    devCompileOnly(project(":hot-reload-agent"))
 }
 
 tasks.withType<Test>().configureEach {

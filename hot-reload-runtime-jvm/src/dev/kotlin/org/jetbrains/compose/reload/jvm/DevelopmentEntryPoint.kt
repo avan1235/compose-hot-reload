@@ -7,7 +7,12 @@
 
 package org.jetbrains.compose.reload.jvm
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.update
 import org.jetbrains.compose.reload.agent.orchestration
@@ -21,8 +26,16 @@ import org.jetbrains.compose.reload.orchestration.asFlow
 
 private val logger = createLogger()
 
+private val enabled = false
+
+
 @Composable
 fun DevelopmentEntryPoint(child: @Composable () -> Unit) {
+    if (!enabled) {
+        child()
+        return
+    }
+
     /* Checking if we're currently in the stack of a hot reload */
     if (hotReloadStateLocal.current != null) {
         child()
