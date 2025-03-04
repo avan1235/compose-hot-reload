@@ -92,7 +92,7 @@ fun App() {
                 uiStateCounter++
                 CounterState.set(CounterState(applicationStateCounter.value + 1))
             }) {
-                Text("Inc! ", fontSize = 48.sp)
+                Text("Hello", fontSize = 48.sp)
             }
         }
     }

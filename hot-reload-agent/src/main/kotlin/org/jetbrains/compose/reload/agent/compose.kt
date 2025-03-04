@@ -23,11 +23,8 @@ private val composeClassLoadersLock = ReentrantLock()
 private val composeClassLoaders = WeakHashMap<ClassLoader, Unit>()
 
 internal fun launchComposeInstrumentation(instrumentation: Instrumentation) {
-    /*
     launchComposeGroupInvalidation()
     instrumentation.addTransformer(ComposeTransformer)
-
-     */
 }
 
 private object ComposeTransformer : ClassFileTransformer {

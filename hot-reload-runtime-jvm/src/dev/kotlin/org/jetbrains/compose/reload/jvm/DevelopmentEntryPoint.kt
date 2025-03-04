@@ -31,11 +31,6 @@ private val enabled = false
 
 @Composable
 fun DevelopmentEntryPoint(child: @Composable () -> Unit) {
-    if (!enabled) {
-        child()
-        return
-    }
-
     /* Checking if we're currently in the stack of a hot reload */
     if (hotReloadStateLocal.current != null) {
         child()
