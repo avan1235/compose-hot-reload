@@ -1,21 +1,24 @@
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.material3.Card
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SomeWidget() {
-    val transition = rememberInfiniteTransition()
-    val scale by transition.animateFloat(
-        0.95f, 1.04f, infiniteRepeatable(tween(500), RepeatMode.Reverse)
-    )
+    Card {
+        println("A")
 
-    Text("👋 Hello from 'widgets'!", fontSize = 24.0.sp, modifier = Modifier.scale(scale))
+        Card {
+            println("B")
+
+            Card {
+                println("C")
+
+                Surface {
+                    println("D")
+                }
+            }
+        }
+    }
 }
