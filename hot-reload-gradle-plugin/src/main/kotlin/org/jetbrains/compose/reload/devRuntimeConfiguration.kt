@@ -115,7 +115,7 @@ private fun KotlinTarget.createComposeHotReloadRuntimeElements() {
             }
         }
 
-        configuration.outgoing.artifact(project.provider { main.output.resourcesDirProvider }) { artifact ->
+        configuration.outgoing.artifact(project.provider { main.output.resourcesDir }) { artifact ->
             artifact.builtBy(main.output.allOutputs)
             artifact.builtBy(main.compileTaskProvider)
             artifact.type = ArtifactTypeDefinition.DIRECTORY_TYPE
