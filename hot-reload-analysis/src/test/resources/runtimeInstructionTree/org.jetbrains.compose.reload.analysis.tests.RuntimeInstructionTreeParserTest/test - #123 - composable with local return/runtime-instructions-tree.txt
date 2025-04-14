@@ -120,7 +120,7 @@ class TestKt {
                     StartReplaceGroup(key=ComposeGroupKey(key=-1254930869))
                     BlockToken(1)
                     SourceInformation(7@153L134)
-                    BlockToken(2)
+                    BlockToken(4)
                     LabelToken(L8)
                     BlockToken(2)
                     LabelToken(L9)

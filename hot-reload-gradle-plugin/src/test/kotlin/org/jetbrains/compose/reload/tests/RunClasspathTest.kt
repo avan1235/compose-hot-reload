@@ -146,6 +146,7 @@ class RunClasspathTest {
             PathRegex(".*hot-reload/.*runtime-api-jvm-$HOT_RELOAD_VERSION.jar"),
             PathRegex(".*hot-reload/.*/runtime-jvm-$HOT_RELOAD_VERSION-dev.jar"),
             PathRegex(".*/userHome/.*"), // Transitive maven dependencies
+            PathRegex(".*/\\.m2/.*"), // Transitive maven dependencies
         )
     }
 }
