@@ -34,6 +34,7 @@ dependencies {
     compileOnly(deps.compose.compiler.gradlePlugin)
 
     implementation(project(":hot-reload-gradle-core"))
+    implementation(project(":hot-reload-gradle-idea"))
     implementation(project(":hot-reload-core"))
     implementation(project(":hot-reload-orchestration"))
 
