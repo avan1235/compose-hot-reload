@@ -5,6 +5,7 @@
 
 package org.jetbrains.compose.reload.tests
 
+import kotlinx.serialization.json.JsonPrimitive
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.support.serviceOf
 import org.gradle.testfixtures.ProjectBuilder
@@ -87,8 +88,9 @@ class ModelBuilderTest {
     }
 
     private fun String.testSanitized(project: Project): String {
-        return replace(project.projectDir.path, "<PROJECT_DIR>")
+        return replace(JsonPrimitive(project.projectDir.path).content, "<PROJECT_DIR>")
             .replace(HOT_RELOAD_VERSION, "<HOT_RELOAD_VERSION>")
+            .replace("""\\""", "/")
             .sanitized()
     }
 }
