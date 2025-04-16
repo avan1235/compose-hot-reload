@@ -88,8 +88,10 @@ class ModelBuilderTest {
     }
 
     private fun String.testSanitized(project: Project): String {
-        return replace(JsonPrimitive(project.projectDir.path).content, "<PROJECT_DIR>")
-            .replace(HOT_RELOAD_VERSION, "<HOT_RELOAD_VERSION>")
+        return replace(
+            JsonPrimitive(project.projectDir.path).toString().removePrefix("\"").removeSuffix("\""),
+            "<PROJECT_DIR>"
+        ).replace(HOT_RELOAD_VERSION, "<HOT_RELOAD_VERSION>")
             .replace("""\\""", "/")
             .sanitized()
     }
